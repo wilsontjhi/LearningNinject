@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using EssentialTools.Models;
 using Ninject;
+using Ninject.Web.Common;
 
 namespace EssentialTools.Infrastructure
 {
@@ -18,7 +19,7 @@ namespace EssentialTools.Infrastructure
 
         private void AddBindings()
         {
-            _Kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+            _Kernel.Bind<IValueCalculator>().To<LinqValueCalculator>().InRequestScope();
             _Kernel.Bind<IDiscountHelper>()
                 .To<DefaultDiscountHelper>()
                 .WithConstructorArgument("discountSize", 50M);

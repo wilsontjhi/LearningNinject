@@ -8,7 +8,7 @@ namespace EssentialTools.Controllers
         private readonly IValueCalculator _Calc;
         private readonly Product[] _Products;
 
-        public HomeController(IValueCalculator calc)
+        public HomeController(IValueCalculator calc, IValueCalculator uselessCalc)
         {
             _Calc = calc;
             _Products = new Product[]
