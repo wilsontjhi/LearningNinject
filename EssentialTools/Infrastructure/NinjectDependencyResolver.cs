@@ -19,6 +19,9 @@ namespace EssentialTools.Infrastructure
         private void AddBindings()
         {
             _Kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+            _Kernel.Bind<IDiscountHelper>()
+                .To<DefaultDiscountHelper>()
+                .WithPropertyValue("DiscountSize", 50M);
         }
 
         public object GetService(Type serviceType)
