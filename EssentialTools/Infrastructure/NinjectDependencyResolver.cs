@@ -22,6 +22,9 @@ namespace EssentialTools.Infrastructure
             _Kernel.Bind<IDiscountHelper>()
                 .To<DefaultDiscountHelper>()
                 .WithConstructorArgument("discountSize", 50M);
+            _Kernel.Bind<IDiscountHelper>()
+                .To<FlexibleDiscountHelper>()
+                .WhenInjectedInto<LinqValueCalculator>();
         }
 
         public object GetService(Type serviceType)
